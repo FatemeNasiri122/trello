@@ -35,6 +35,7 @@ const TodoContainer = () => {
         if (s.id === +source.index + 1) tempList = s;
       });
       dispatch(moveItem({ source, destination, tempList }));
+      console.log(state.todo)
     }
   };
 

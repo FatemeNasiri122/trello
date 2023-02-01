@@ -72,8 +72,13 @@ export const todoSlice = createSlice({
             const source = +action.payload.source.index ;
             const destination = +action.payload.destination.index;
             const ids = state.length
-            state[source].id = destination
-            state[destination].id = source
+            if (source < destination){
+                state[source].id = destination
+                state[destination].id = destination - 1
+            }else {
+                state[source].id = destination
+                state[destination].id = destination + 1
+            }
             state.sort((a, b) => a.id - b.id)
             for (let i = 0; i < ids; i++) {
                 state[i].id = i
